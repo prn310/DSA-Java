@@ -1,0 +1,28 @@
+class Solution {
+    public int missingNumber(int[] nums) {
+        int i=0;
+        //cyclic sort
+        while(i<nums.length){
+            //value can be placed and is not at its correct index
+            if(nums[i]<nums.length && nums[i]!=i){
+               // swap
+               int temp=nums[i];
+               nums[i]=nums[nums[i]];
+               nums[temp]=temp;
+            }
+            else{
+                //correct position or value ==nums.length
+                i++;
+            }
+            
+            }
+            //find missing number 
+            for (i=0;i<nums.length;i++){
+                if(nums[i]!=i){
+                    return i;
+                }
+        }
+        //if all indices are correct ,nums.length is missing 
+        return nums.length;
+    }
+}
